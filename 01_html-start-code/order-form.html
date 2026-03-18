@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form - 14_Manit (Arm/อาม)</title>
+</head>
+<body style="padding:40px;">
+  <div id="header">
+    <nav>
+      <ul>
+        <li><a href="./personal-profile.html">My personal profile</a></li>
+        <li><a href="./dream-business.html">My dream business</a></li>
+      </ul>
+    </nav>
+  </div>
+  <hr>
+  <form action="/order" method="get" id="orderFrom">
+    <h2>เลือกเมนูสำหรับวันนี้ได้เลยครับ!</h2>
+    <div>
+      <label for="drink">เมนูเครื่องดื่ม:</label>
+      <select id="drink" name="drink" required>
+        <option value="">เลือกเครื่องดื่ม</option>
+        <option value="ชาเย็น">ชาเย็น</option>
+        <option value="ชานม">ชานม</option>
+        <option value="ชาไทย">ชาไทย</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <label for="number">จำนวนแก้ว:</label>
+      <input id="number" name="number" type="number" value="1" required>
+    </div>
+    <br>
+    <fieldset>
+      <legend><b>เลือกปริมาณเบาหวานที่ต้องการ:</b></legend>
+      <div>
+        <input id="sweetness100" type="radio" name="sweetness" value="100" checked>
+        <label for="sweetness100">100% – หวานตัดขา</label>
+      </div>
+      <div>
+        <input id="sweetness50" type="radio" name="sweetness" value="50">
+        <label for="sweetness50">50% – หวานน้อย <em>อร่อยอะไรละครับ!</em></label>
+      </div>
+      <div>
+        <input id="sweetness0" type="radio" name="sweetness" value="0" disabled>
+        <label for="sweetness0"><del>0% – ไม่หวาน <b>เราก็ไม่ขายครับ</b></del></label>
+      </div>
+    </fieldset>
+    <br>
+    <br>
+    <button type="submit">ยืนยันสั่งซ์้อ</button>
+  </form>
+</body>
+</html>
