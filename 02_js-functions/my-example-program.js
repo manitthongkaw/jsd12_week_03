@@ -6,43 +6,73 @@ import readline from "readline";
 1 ตารางวา (Square Wa) = 4 ตารางเมตร (Square Meter)
 */
 
+// Covert Area Size
+function raiUnit(size) {
+  const rai = (size).toFixed(2);
+  const ngan = (rai * 4).toFixed(2);
+  const squareWa = (ngan * 100).toFixed(2);
+  const squareMeter = (squareWa * 4).toFixed(2);
+  return `${rai} ไร่ | ${ngan} งาน | ${squareWa} ตารางวา | ${squareMeter} ตารางเมตร`;
+}
+function nganUnit(size) {
+  const ngan = (size).toFixed(2);
+  const rai = (ngan / 4).toFixed(2);
+  const squareWa = (ngan * 100).toFixed(2);
+  const squareMeter = (squareWa * 4).toFixed(2);
+  return `${rai} ไร่ | ${ngan} งาน | ${squareWa} ตารางวา | ${squareMeter} ตารางเมตร`;
+}
+function squareWaUnit(size) {
+  const squareWa = (size).toFixed(2);
+  const ngan = (squareWa / 100).toFixed(2);
+  const rai = (ngan / 4).toFixed(2);
+  const squareMeter = (squareWa * 4).toFixed(2);
+  return `${rai} ไร่ | ${ngan} งาน | ${squareWa} ตารางวา | ${squareMeter} ตารางเมตร`;
+}
+function squareMeter(size) {
+  const squareMeter = (size).toFixed(2);
+  const squareWa = (squareMeter / 4).toFixed(2);
+  const ngan = (squareWa / 100).toFixed(2);
+  const rai = (ngan / 4).toFixed(2);
+  return `${rai} ไร่ | ${ngan} งาน | ${squareWa} ตารางวา | ${squareMeter} ตารางเมตร`;
+}
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-// Covert Area Size
-function raiUnit(size) {
-  return `${size} ไร่ | ${size * 4} งาน | ${(size * 4) * 100} ตารางวา | ${((size * 4) * 100) * 4} ตารางเมตร`;
-}
-function nganUnit(size) {
-  return `${size / 4} ไร่ | ${size} งาน | ${size * 100} ตารางวา | ${(size * 100) * 4} ตารางเมตร`;
-}
-function squareWaUnit(size) {
-  return `${(size / 4) / 100} ไร่ | ${size / 100} งาน | ${size} ตารางวา | ${size * 4} ตารางเมตร`;
-}
-function squareMeter(size) {
-  return `${((size / 4) / 100) / 4} ไร่ | ${(size / 4) / 100} งาน | ${size / 4} ตารางวา | ${size} ตารางเมตร`;
-}
-
 // Input
-rl.question("Select land measurement units (R, N, W or M)", function (unitInput) {
+rl.question(`=== Land Unit Converter ===
+
+Choose unit:
+[R] ไร่
+[N] งาน
+[W] ตารางวา
+[M] ตารางเมตร
+
+Your choice: `, function (unitInput) {
   const unit = unitInput.trim().toUpperCase();
-  rl.question("Area size:", function (sizeInput) {
+  rl.question("Area size: ", function (sizeInput) {
     const size = parseFloat(sizeInput);
     let result;
     // if statement
     if (unit === "R") {
       result = raiUnit(size);
-      console.log(`${size} ${unit} covert to ${result.toFixed(2)}F`);
+      console.log(`${size} ไร่  ==>  ${result}`);
     } else if (unit === "N") {
+      result = nganUnit(size);
+      console.log(`${size} งาน  ==>  ${result}`);
       //
     } else if (unit === "W") {
+      result = squareWaUnit(size);
+      console.log(`${size} ตารางวา  ==>  ${result}`);
       //
     } else if (unit === "M") {
+      result = squareMeter(size);
+      console.log(`${size} ตารางเมตร  ==>  ${result}`);
       //
     } else {
-      console.log(`Invalid area size! Please enter area number.`);
+      console.log(`ขนาดพื้นที่ไม่ถูกต้อง! โปรดระบุเป็นตัวเลข`);
     }
     rl.close();
   });
